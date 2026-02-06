@@ -2,7 +2,7 @@
 
 Now we are comfortable controlling graphics on the LCD using the joystick, we can add some more complexity and start building some basic games! In this lab we also add improved Random Number Generation using the `RNG.h` peripheral, and the use a non-blocking delay by using the `HAL_GetTick()` function, rather than the simple `HAL_DELAY()`. 
 
-The most important file is [Src/main.c](Src/main.c) which contains the main game loop and student activity.
+The most important file is [Core/Src/main.c](Core/Src/main.c) which contains the main game loop and student activity.
 
 ## The Project
 
@@ -31,7 +31,7 @@ Once you have completed these tasks hopefully you will have a game that could al
 
 ## Game Parameters
 
-The following constants in [Src/main.c](Src/main.c) can be adjusted to modify gameplay:
+The following constants in [Core/Src/main.c](Core/Src/main.c) can be adjusted to modify gameplay:
 
 ```c
 #define LCD_WIDTH 240          // Display width in pixels
@@ -88,14 +88,14 @@ This ensures targets don't spawn on top of the player or each other.
 
 ## Student Activity Location
 
-Look for the `STUDENT TODO` comment in [Src/main.c](Src/main.c) around line 270 inside the collision detection loop:
+Look for the `STUDENT TODO` comment in [Core/Src/main.c](Core/Src/main.c) around line 270 inside the collision detection loop:
 
 ```c
-// ===== STUDENT TODO =====
-// 1) Increment a score counter here.
-// 2) Spawn a new target by calling:
-//    Place_Target(i, target_x, target_y, target_active, player_x, player_y);
-// ========================
+   // ===== STUDENT TODO =====
+   // 1) Increment a score counter here.
+   // 2) Spawn a new target by calling:
+   //    Place_Target(i, target_x, target_y, player_x, player_y);
+   // ========================
 ```
 
 This is where you should add your code for scoring and respawning targets.
@@ -165,15 +165,15 @@ This is where you should add your code for scoring and respawning targets.
 
 | File | Purpose |
 |------|---------|
-| [Src/main.c](Src/main.c) | **Main game logic** - Game loop, player movement, collision detection, target spawning |
+| [Core/Src/main.c](Core/Src/main.c) | **Main game logic** - Game loop, player movement, collision detection, target spawning |
 | [Joystick/Joystick.c](Joystick/Joystick.c) | Joystick driver with circle mapping and polar coordinate conversion |
 | [Joystick/Joystick.h](Joystick/Joystick.h) | Joystick API and configuration structures |
-| [Inc/main.h](Inc/main.h) | Main header with configuration macros and function prototypes |
-| [Src/gpio.c](Src/gpio.c) | GPIO peripheral initialization |
-| [Src/adc.c](Src/adc.c) | ADC peripheral configuration for analog input |
-| [Src/rng.c](Src/rng.c) | Hardware random number generator initialization |
-| [Src/stm32l4xx_it.c](Src/stm32l4xx_it.c) | Interrupt handlers |
-| [Src/system_stm32l4xx.c](Src/system_stm32l4xx.c) | System initialization and clock setup |
+| [Core/Inc/main.h](Core/Inc/main.h) | Main header with configuration macros and function prototypes |
+| [Core/Src/gpio.c](Core/Src/gpio.c) | GPIO peripheral initialization |
+| [Core/Src/adc.c](Core/Src/adc.c) | ADC peripheral configuration for analog input |
+| [Core/Src/rng.c](Core/Src/rng.c) | Hardware random number generator initialization |
+| [Core/Src/stm32l4xx_it.c](Core/Src/stm32l4xx_it.c) | Interrupt handlers |
+| [Core/Src/system_stm32l4xx.c](Core/Src/system_stm32l4xx.c) | System initialization and clock setup |
 
 ### LCD Driver
 The project includes an external ST7789V2 LCD driver:
